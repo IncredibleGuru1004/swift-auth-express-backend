@@ -14,7 +14,9 @@
 		044A27292C6D3297004421E1 /* auth.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 044A27272C6D3297004421E1 /* auth.xcdatamodeld */; };
 		044A272B2C6D3298004421E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044A272A2C6D3298004421E1 /* Assets.xcassets */; };
 		044A272E2C6D3298004421E1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 044A272D2C6D3298004421E1 /* Base */; };
+		045434932C7916E900B447BD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045434922C7916E900B447BD /* LoginViewController.swift */; };
 		048A8CBF2C6FD16A00EBFA83 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 048A8CBE2C6FD16A00EBFA83 /* RealmSwift */; };
+		0498A5E82C79347900CE5384 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0498A5E72C79347900CE5384 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		044A272A2C6D3298004421E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		044A272D2C6D3298004421E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		044A272F2C6D3298004421E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		045434922C7916E900B447BD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0498A5E72C79347900CE5384 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 				044A272C2C6D3298004421E1 /* LaunchScreen.storyboard */,
 				044A272F2C6D3298004421E1 /* Info.plist */,
 				044A27272C6D3297004421E1 /* auth.xcdatamodeld */,
+				045434922C7916E900B447BD /* LoginViewController.swift */,
+				0498A5E72C79347900CE5384 /* RegisterViewController.swift */,
 			);
 			path = auth;
 			sourceTree = "<group>";
@@ -152,6 +158,8 @@
 				044A27232C6D3297004421E1 /* ViewController.swift in Sources */,
 				044A271F2C6D3297004421E1 /* AppDelegate.swift in Sources */,
 				044A27212C6D3297004421E1 /* SceneDelegate.swift in Sources */,
+				0498A5E82C79347900CE5384 /* RegisterViewController.swift in Sources */,
+				045434932C7916E900B447BD /* LoginViewController.swift in Sources */,
 				044A27292C6D3297004421E1 /* auth.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
