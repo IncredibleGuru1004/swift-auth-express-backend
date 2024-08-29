@@ -18,12 +18,13 @@ const register = (req, res) => {
 };
 
 const login = (req, res) => {
-    const { username, password } = req.body;
-    if (!username || !password) {
+    const { email, password } = req.body;
+    console.log(email + "== " + password)
+    if (!email || !password) {
         return res.status(400).json({ message: 'All fields are required' });
     }
 
-    const user = findUser(username);
+    const user = findUser(email);
     if (!user || user.password !== password) {
         return res.status(401).json({ message: 'Invalid username or password' });
     }

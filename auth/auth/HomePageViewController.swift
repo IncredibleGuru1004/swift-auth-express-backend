@@ -15,6 +15,11 @@ class HomePageViewController : UIViewController {
     }
     
     @IBAction func onLogoutClick () {
-        self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
+//        self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false,completion:nil)
     }
 }

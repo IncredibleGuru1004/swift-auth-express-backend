@@ -35,31 +35,26 @@ class LoginViewController: UIViewController {
         emailView.layer.cornerRadius = 20
         emailLeftImageView.image = UIImage(systemName: "envelope")
         emailTextField.placeholder = "E-Mail"
+        emailTextField.text = ""
         passwordView.layer.cornerRadius = 20
         passwordLeftImageView.image = UIImage(systemName: "lock")
         passwordRightImageView.image = UIImage(systemName: "eye")
         passwordTextField.isSecureTextEntry = true
         passwordTextField.placeholder = "Password"
+        passwordTextField.text = ""
+        
     }
     
     private func navigateToHomePageViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let tabBarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as? UITabBarController {
-            
-            // Set the HomeViewController as the initial view controller
-            if let navigationController = tabBarController.viewControllers?.first as? UINavigationController {
-                let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
-                
-                navigationController.setViewControllers([homeViewController], animated: false)
-            }
-            
             // Present the TabBarController
             tabBarController.modalPresentationStyle = .fullScreen
             self.present(tabBarController, animated: false, completion: nil)
         }
     }
     
-    func loginUser(with info: [String: String], completion: @escaping (Bool, String) -> Void) {
+    private func loginUser(with info: [String: String], completion: @escaping (Bool, String) -> Void) {
         guard let url = URL(string: "http://localhost:3001/auth/login") else {
             completion(false, "Invalid URL")
             return
@@ -125,8 +120,17 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onLoginClick () {
-        
-        navigateToHomePageViewController()
+        let loginInfo = ["email":emailTextField.text!, "password": passwordTextField.text!]
+        self.loginUser(with: loginInfo) { success , message in
+            if success {
+                print("User logged in: \(message)")
+                DispatchQueue.main.async {
+                    self.navigateToHomePageViewController()
+                }
+            } else {
+                print("Login faild: \(message)")
+            }
+        }
     }
     
     @IBAction func onRegisterClick () {
