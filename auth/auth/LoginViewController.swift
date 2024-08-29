@@ -12,7 +12,6 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var emailLeftImageView: UIImageView!
-    @IBOutlet weak var emailRightImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordView: UIView!
@@ -43,6 +42,68 @@ class LoginViewController: UIViewController {
         passwordTextField.placeholder = "Password"
     }
     
+    private func navigateToHomePageViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let tabBarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as? UITabBarController {
+            
+            // Set the HomeViewController as the initial view controller
+            if let navigationController = tabBarController.viewControllers?.first as? UINavigationController {
+                let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
+                
+                navigationController.setViewControllers([homeViewController], animated: false)
+            }
+            
+            // Present the TabBarController
+            tabBarController.modalPresentationStyle = .fullScreen
+            self.present(tabBarController, animated: false, completion: nil)
+        }
+    }
+    
+    func loginUser(with info: [String: String], completion: @escaping (Bool, String) -> Void) {
+        guard let url = URL(string: "http://localhost:3001/auth/login") else {
+            completion(false, "Invalid URL")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: info, options: [])
+        } catch {
+            completion(false, "Error serializing JSON")
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                completion(false, "Network error: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    completion(true, "Login successful")
+                } else {
+                    do {
+                        if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                           let message = json["message"] as? String {
+                            completion(false, message)
+                        } else {
+                            completion(false, "Login failed with unknown error")
+                        }
+                    } catch {
+                        completion(false, "Error parsing response JSON")
+                    }
+                }
+            } else {
+                completion(false, "Unknown network error")
+            }
+        }
+        task.resume()
+    }
+    
     @IBAction func onTogglePasswordClick () {
         isPasswordHidden = !isPasswordHidden
         if isPasswordHidden {
@@ -65,6 +126,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func onLoginClick () {
         
+        navigateToHomePageViewController()
     }
     
     @IBAction func onRegisterClick () {
@@ -75,7 +137,10 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onForgotPasswordClick () {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(identifier: "ForgotPasswordViewController") as? ForgotPasswordViewController {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @IBAction func onGoogleClick () {
