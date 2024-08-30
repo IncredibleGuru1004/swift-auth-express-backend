@@ -12,8 +12,8 @@ const addUser = (user) => {
     users.push(user);
 };
 
-const findUser = (username) => {
-    return users.find(user => user.username === username);
+const findUser = (email) => {
+    return users.find(user => user.email === email);
 };
 
 module.exports = { User, addUser, findUser };

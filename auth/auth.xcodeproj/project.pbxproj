@@ -22,6 +22,9 @@
 		04ECAED02C7FB22500B66B81 /* VerifyEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ECAECF2C7FB22500B66B81 /* VerifyEmailViewController.swift */; };
 		04ECAED22C7FBF7100B66B81 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ECAED12C7FBF7100B66B81 /* ResetPasswordViewController.swift */; };
 		04ECAED42C7FC84A00B66B81 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ECAED32C7FC84A00B66B81 /* HomePageViewController.swift */; };
+		04EEF8A12C822F57007A99E7 /* NRUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EEF8A02C822F57007A99E7 /* NRUserDefaults.swift */; };
+		04EEF8A32C82343E007A99E7 /* NRRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EEF8A22C82343E007A99E7 /* NRRealmStore.swift */; };
+		04EEF8A62C8234D2007A99E7 /* NRUserRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EEF8A52C8234D2007A99E7 /* NRUserRealm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +44,9 @@
 		04ECAECF2C7FB22500B66B81 /* VerifyEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailViewController.swift; sourceTree = "<group>"; };
 		04ECAED12C7FBF7100B66B81 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		04ECAED32C7FC84A00B66B81 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		04EEF8A02C822F57007A99E7 /* NRUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRUserDefaults.swift; sourceTree = "<group>"; };
+		04EEF8A22C82343E007A99E7 /* NRRealmStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRRealmStore.swift; sourceTree = "<group>"; };
+		04EEF8A52C8234D2007A99E7 /* NRUserRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRUserRealm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,10 @@
 		044A271D2C6D3297004421E1 /* auth */ = {
 			isa = PBXGroup;
 			children = (
+				04EEF8A42C8234A0007A99E7 /* Model */,
+				04EEF89F2C822E9F007A99E7 /* Singleton */,
+				04EEF89C2C822D9A007A99E7 /* Main */,
+				04EEF89A2C822C58007A99E7 /* Auth */,
 				044A271E2C6D3297004421E1 /* AppDelegate.swift */,
 				044A27202C6D3297004421E1 /* SceneDelegate.swift */,
 				044A27222C6D3297004421E1 /* ViewController.swift */,
@@ -82,15 +92,70 @@
 				044A272C2C6D3298004421E1 /* LaunchScreen.storyboard */,
 				044A272F2C6D3298004421E1 /* Info.plist */,
 				044A27272C6D3297004421E1 /* auth.xcdatamodeld */,
+			);
+			path = auth;
+			sourceTree = "<group>";
+		};
+		04EEF89A2C822C58007A99E7 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				04EEF89B2C822C72007A99E7 /* Forgot Password */,
 				045434922C7916E900B447BD /* LoginViewController.swift */,
 				0498A5E72C79347900CE5384 /* RegisterViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		04EEF89B2C822C72007A99E7 /* Forgot Password */ = {
+			isa = PBXGroup;
+			children = (
 				04ECAECD2C7FA1D200B66B81 /* ForgotPasswordViewController.swift */,
 				04ECAECF2C7FB22500B66B81 /* VerifyEmailViewController.swift */,
 				04ECAED12C7FBF7100B66B81 /* ResetPasswordViewController.swift */,
-				04ECAED32C7FC84A00B66B81 /* HomePageViewController.swift */,
+			);
+			path = "Forgot Password";
+			sourceTree = "<group>";
+		};
+		04EEF89C2C822D9A007A99E7 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				04EEF89E2C822E1C007A99E7 /* Favourite */,
+				04EEF89D2C822DD0007A99E7 /* HomePage */,
 				047BC6D72C7FEBB9008AA488 /* MainTabBarController.swift */,
 			);
-			path = auth;
+			path = Main;
+			sourceTree = "<group>";
+		};
+		04EEF89D2C822DD0007A99E7 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				04ECAED32C7FC84A00B66B81 /* HomePageViewController.swift */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		04EEF89E2C822E1C007A99E7 /* Favourite */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favourite;
+			sourceTree = "<group>";
+		};
+		04EEF89F2C822E9F007A99E7 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				04EEF8A02C822F57007A99E7 /* NRUserDefaults.swift */,
+				04EEF8A22C82343E007A99E7 /* NRRealmStore.swift */,
+			);
+			path = Singleton;
+			sourceTree = "<group>";
+		};
+		04EEF8A42C8234A0007A99E7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04EEF8A52C8234D2007A99E7 /* NRUserRealm.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,14 +237,17 @@
 			files = (
 				04ECAED22C7FBF7100B66B81 /* ResetPasswordViewController.swift in Sources */,
 				044A27232C6D3297004421E1 /* ViewController.swift in Sources */,
+				04EEF8A12C822F57007A99E7 /* NRUserDefaults.swift in Sources */,
 				047BC6D82C7FEBB9008AA488 /* MainTabBarController.swift in Sources */,
 				04ECAECE2C7FA1D200B66B81 /* ForgotPasswordViewController.swift in Sources */,
 				044A271F2C6D3297004421E1 /* AppDelegate.swift in Sources */,
 				044A27212C6D3297004421E1 /* SceneDelegate.swift in Sources */,
+				04EEF8A32C82343E007A99E7 /* NRRealmStore.swift in Sources */,
 				04ECAED42C7FC84A00B66B81 /* HomePageViewController.swift in Sources */,
 				0498A5E82C79347900CE5384 /* RegisterViewController.swift in Sources */,
 				045434932C7916E900B447BD /* LoginViewController.swift in Sources */,
 				04ECAED02C7FB22500B66B81 /* VerifyEmailViewController.swift in Sources */,
+				04EEF8A62C8234D2007A99E7 /* NRUserRealm.swift in Sources */,
 				044A27292C6D3297004421E1 /* auth.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

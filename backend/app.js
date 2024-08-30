@@ -9,7 +9,6 @@ app.use(bodyParser.json());
 
 // Use the auth routes
 app.use('/auth', authRoutes);
-
 const port = config.port;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
