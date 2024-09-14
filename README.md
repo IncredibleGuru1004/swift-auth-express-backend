@@ -1,11 +1,11 @@
-# Project Name
+# EverLasting
 
 [![Swift](https://img.shields.io/badge/Swift-5.0-orange)](https://swift.org)
 [![Express](https://img.shields.io/badge/Express-4.17.1-green)](https://expressjs.com/)
 
 ## Introduction
 
-[Your Project Name] is an authentication application built using Swift for the frontend and Express for the backend. The application supports several key features including user registration, login, password recovery via email OTP, and a home page for authenticated users.
+This App is an authentication application built using Swift for the frontend and Express for the backend. The application supports several key features including user registration, login, password recovery via email OTP, and a home page for authenticated users.
 
 ## Features
 
@@ -37,8 +37,8 @@
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/your-repo-name.git
-    cd your-repo-name/backend
+    git clone https://github.com/IncredibleGuru1004/swift-auth-express-backend.git
+    cd swift-auth-express-backend/backend
     ```
 
 2. Install Node.js dependencies:
