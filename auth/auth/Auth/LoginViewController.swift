@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
         setupUI()
     }
     
+    
     func setupUI () {
         emailView.layer.cornerRadius = 20
         emailLeftImageView.image = UIImage(systemName: "envelope")
@@ -43,6 +44,10 @@ class LoginViewController: UIViewController {
         passwordTextField.placeholder = "Password"
         passwordTextField.text = ""
         
+    }
+    
+    func isValidCornerRadius(_ radius: CGFloat) -> CGFloat {
+        return radius.isNaN ? 0 : radius
     }
     
     private func navigateToHomePageViewController() {
@@ -148,7 +153,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func onForgotPasswordClick () {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(identifier: "ForgotPasswordViewController") as? ForgotPasswordViewController {
+        if let vc = storyboard.instantiateViewController(identifier: "SendPhoneCodeViewController") as? SendPhoneCodeViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }

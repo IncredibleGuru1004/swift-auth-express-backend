@@ -1,4 +1,5 @@
 const { User, addUser, findUser } = require('../models/userModel.js');
+const { generateOtp } = require('../utils/generateOtp.js')
 
 const register = (req, res) => {
     const { username, email, password } = req.body;
@@ -34,4 +35,16 @@ const login = (req, res) => {
     return res.status(200).json({ message: 'Logged in successfully' });
 };
 
-module.exports = { register, login };
+const sendPhoneNumber = (req, res) => {
+    const { phoneNumber } = req.body
+    if (!phoneNumber) {
+        return res.status(400).json({ message: "Phone Number is required"});
+    }
+    const otp = generateOtp()
+
+    console.log("phone Number: ", phoneNumber)
+    console.log("otp Code: ", otp)
+    return res.status(200).json({ code: otp })
+}
+
+module.exports = { register, login, sendPhoneNumber };
